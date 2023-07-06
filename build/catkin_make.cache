@@ -1,0 +1,2 @@
+sensor_distancia:sensor_distancia_pyfirmata
+-DCATKIN_DEVEL_PREFIX=/home/letra/danipiWs/devel -DCMAKE_INSTALL_PREFIX=/home/letra/danipiWs/install -G Unix Makefiles

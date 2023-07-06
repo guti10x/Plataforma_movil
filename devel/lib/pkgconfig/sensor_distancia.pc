@@ -1,0 +1,8 @@
+prefix=/home/letra/danipiWs/devel
+
+Name: sensor_distancia
+Description: Description of sensor_distancia
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

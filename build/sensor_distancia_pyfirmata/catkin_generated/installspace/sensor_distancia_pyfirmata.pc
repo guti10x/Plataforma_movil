@@ -1,0 +1,8 @@
+prefix=/home/letra/danipiWs/install
+
+Name: sensor_distancia_pyfirmata
+Description: Description of sensor_distancia_pyfirmata
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
