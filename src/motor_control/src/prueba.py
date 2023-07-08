@@ -16,9 +16,24 @@ def send_data_to_arduino():
         rospy.loginfo("Conexión con Arduino establecida correctamente")
 
         while not rospy.is_shutdown():
-            data_to_send = raw_input("Ingrese los datos a enviar: ")
-            ser.write(data_to_send.encode('utf-8'))  # Envía los datos codificados en utf-8
-            rospy.loginfo("Datos enviados: %s" % data_to_send)
+            entrada = raw_input("Ingrese la dirección (w, s, a, d): ")
+            
+            if entrada == 'q':
+                break  # Salir del bucle si se ingresa 'q'
+            elif entrada == 'w':
+                valor = 1
+            elif entrada == 's':
+                valor = 2
+            elif entrada == 'a':
+                valor = 3
+            elif entrada == 'd':
+                valor = 4
+            else:
+                print("Error: Tecla inválida.")
+                continue  # Volver a solicitar una nueva entrada
+
+            ser.write(str(valor).encode('utf-8'))  # Envía el valor codificado en utf-8
+            rospy.loginfo("Valor enviado: %d" % valor)
 
     except serial.SerialException:
         rospy.logerr("No se pudo establecer conexión con el Arduino")
