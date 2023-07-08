@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/letra/danipiWs/build/gtest/cmake_install.cmake")
+  include("/home/letra/danipiWs/build/motor_control/cmake_install.cmake")
   include("/home/letra/danipiWs/build/sensor_distancia/cmake_install.cmake")
   include("/home/letra/danipiWs/build/sensor_distancia_pyfirmata/cmake_install.cmake")
 

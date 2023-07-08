@@ -5,5 +5,6 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("motor_control")
 subdirs("sensor_distancia")
 subdirs("sensor_distancia_pyfirmata")

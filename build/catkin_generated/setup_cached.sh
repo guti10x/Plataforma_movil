@@ -7,4 +7,10 @@
 # new environment variables
 
 # modified environment variables
+export CMAKE_PREFIX_PATH="/home/letra/danipiWs/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/letra/danipiWs/devel/lib:$LD_LIBRARY_PATH"
+export PATH='/opt/ros/melodic/bin:/home/letra/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games'
+export PKG_CONFIG_PATH="/home/letra/danipiWs/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/letra/danipiWs/build'
+export ROSLISP_PACKAGE_DIRECTORIES='/home/letra/danipiWs/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/letra/danipiWs/src:$ROS_PACKAGE_PATH"
