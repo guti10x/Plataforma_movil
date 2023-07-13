@@ -16,8 +16,8 @@ def read_ultrasound_data():
             ser = serial.Serial(port, baud_rate)
             data = ser.readline().strip().decode('utf-8')
             ser.close()
-            rospy.loginfo("Conexión con Arduino establecida correctamente")
-            rospy.loginfo("Datos del sensor: %s" % data)
+            #rospy.loginfo("Conexión con Arduino establecida correctamente")
+            rospy.loginfo("Distancia frontal: %s cm." % data)
         except serial.SerialException:
             rospy.logerr("No se pudo establecer conexión con el sensor")
 

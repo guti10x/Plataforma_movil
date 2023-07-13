@@ -3,31 +3,48 @@
 
 import rospy
 import serial
-from std_msgs.msg import String
+import time
 
-def send_command(command):
-    rospy.loginfo("Enviando comando: {}".format(command))
-    ser.write(command.encode())  # Enviar el comando al Arduino a través de la comunicación serial
+def send_data_to_arduino():
+    rospy.init_node('data_sender', anonymous=True)
 
-if __name__ == '__main__':
-    rospy.init_node('arduino_control_node')
-    rospy.loginfo("Nodo de control de Arduino iniciado.")
-
-    # Configurar la comunicación serial con Arduino
     port = '/dev/ttyACM0'  # Puerto serial al que está conectado el Arduino
     baud_rate = 9600  # Velocidad de comunicación
-    ser = serial.Serial(port, baud_rate)
 
-    # Crear el publicador para enviar los comandos al Arduino
-    pub = rospy.Publisher('arduino_commands', String, queue_size=10)
+    try:
+        ser = serial.Serial(port, baud_rate)
+        rospy.loginfo("Conexión con Arduino establecida correctamente")
 
-    while not rospy.is_shutdown():
-        # Leer la entrada por consola
-        command = raw_input("Introduce un comando (w, a, s, d): ")
+        while not rospy.is_shutdown():
+            entrada = raw_input("Ingrese la dirección (w, s, a, d): ")
+            
+            if entrada == 'q':
+                break  # Salir del bucle si se ingresa 'q'
+            elif entrada == 'w':
+                valor = 2
+            elif entrada == 's':
+                valor = 1
+            elif entrada == 'a':
+                valor = 3
+            elif entrada == 'd':
+                valor = 4
+            else:
+                print("Error: Tecla inválida.")
+                continue  # Volver a solicitar una nueva entrada
 
-        # Publicar el comando
-        pub.publish(command)
+            ser.write(str(valor).encode('utf-8'))  # Envía el valor codificado en utf-8
+            rospy.loginfo("Valor enviado: %d" % valor)
 
-        # Enviar el comando al Arduino
-        send_command(command)
+    except serial.SerialException:
+        rospy.logerr("No se pudo establecer conexión con el Arduino")
+
+    finally:
+        if ser.is_open:
+            ser.close()
+
+if __name__ == '__main__':
+    try:
+        send_data_to_arduino()
+    except rospy.ROSInterruptException:
+        pass
 

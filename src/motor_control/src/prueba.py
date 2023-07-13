@@ -21,9 +21,9 @@ def send_data_to_arduino():
             if entrada == 'q':
                 break  # Salir del bucle si se ingresa 'q'
             elif entrada == 'w':
-                valor = 1
-            elif entrada == 's':
                 valor = 2
+            elif entrada == 's':
+                valor = 1
             elif entrada == 'a':
                 valor = 3
             elif entrada == 'd':
